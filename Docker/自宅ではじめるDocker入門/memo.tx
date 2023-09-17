@@ -17,8 +17,7 @@ sudo netplan apply
 sudo apt update
 sudo apt upgrade
 sudo apt install docker.io
-sudo -i
-apt install docker-compose
+sudo apt install docker-compose
 
 --dockerコマンド--
 docker -v
