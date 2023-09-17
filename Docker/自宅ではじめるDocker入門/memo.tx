@@ -7,7 +7,7 @@ network:
   ethernets:
     enp0s8:
       dhcp4: no
-      dhcp8: no
+      dhcp6: no
       addresses: [192.168.56.2/24]
 
 :wqで保存
