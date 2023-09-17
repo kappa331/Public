@@ -1,0 +1,31 @@
+アダプター2にホストオンリーアダプターを追加
+ログイン後
+sudo vi /etc/netplan/01-hostonly-config.yaml
+
+--記述--
+network:
+  ethernets:
+    enp0s8:
+      dhcp4: no
+      dhcp8: no
+      addresses: [192.168.56.2/24]
+
+:wqで保存
+
+sudo netplan apply
+
+sudo apt update
+sudo apt upgrade
+sudo apt install docker.io
+sudo -i
+apt install docker-compose
+
+--dockerコマンド--
+docker -v
+docker system prune --all --volumes
+
+--docker-composeコマンド--
+docker-compose up -d
+docker-compose ps
+docker-compose stop
+docker-compose rm
