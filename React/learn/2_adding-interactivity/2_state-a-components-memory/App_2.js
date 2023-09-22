@@ -15,7 +15,7 @@ export default function Gallery() {
 
     let sculpture = sculptureList[index];
     return (
-        <section>
+        <>
             <button onClick={handleNextClick}>
                 Next
             </button>
@@ -34,6 +34,6 @@ export default function Gallery() {
                 src={sculpture.url}
                 alt={sculpture.alt}
             />
-        </section>
+        </>
     );
 }
