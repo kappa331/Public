@@ -1,8 +1,8 @@
-import { useImmer } from 'use-immer';
+import { useState } from 'react';
 
 export default function Form() {
-    const [person, updatePerson] = useImmer({
-        name: 'Niki de Saint Phalle',
+    const [person, setPerson] = useState({
+        name: 'Kiki de Saint Phalle',
         artwork: {
             title: 'Blue Nana',
             city: 'Hamburg',
@@ -11,26 +11,39 @@ export default function Form() {
     });
 
     function handleNameChange(e) {
-        updatePerson(draft => {
-            draft.name = e.target.value;
+        setPerson({
+            ...person,
+            name: e.target.value
+        });
+    }
+    
+    function handleTitleChange(e) {
+        setPerson({
+            ...person,
+            artwork: {
+                ...person.artwork,
+                title: e.target.value
+            }
         });
     }
 
-    function handleTitleChange(e) {
-        updatePerson(draft => {
-            draft.artwork.title = e.target.value;
-        })
-    }
-
     function handleCityChange(e) {
-        updatePerson(draft => {
-            draft.artwork.city = e.target.value;
+        setPerson({
+            ...person,
+            artwork: {
+                ...person.artwork,
+                city: e.target.value
+            }
         });
     }
 
     function handleImageChange(e) {
-        updatePerson(draft => {
-            draft.artwork.image = e.target.value;
+        setPerson({
+            ...person,
+            artwork: {
+                ...person.artwork,
+                image: e.target.value
+            }
         });
     }
 
