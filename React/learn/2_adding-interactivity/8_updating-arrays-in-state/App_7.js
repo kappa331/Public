@@ -1,29 +1,34 @@
 import { useState } from 'react';
-import { useImmer } from 'use-immer';
 
 let nextId = 3;
 const initialList = [
     { id: 0, title: 'Big Bellies', seen: false},
     { id: 1, title: 'Lunar Landscape', seen: false},
-    { id: 2, title: 'Terracotta Army', seen: true},
+    { id: 2, title: 'Terracotta Army', seend: true},
 ];
 
 export default function BucketList() {
-    const [myList, updateMyList] = useImmer(initialList);
-    const [yourList, updateYourList] = useImmer(initialList);
+    const [myList, setMyList] = useState(initialList);
+    const [yourList, setYourList] = useState(initialList);
 
-    function handleToggleMyList(id, nextSeen) {
-        updateMyList(draft => {
-            const artwork = draft.find(a => a.id === id);
-            artwork.seen = nextSeen;
-        });
+    function handleToggleMyList(artworkId, nextSeen) {
+        setMyList(myList.map(artwork => {
+            if(artwork.id === artworkId) {
+                return { ...artwork, seen: nextSeen };
+            } else {
+                return artwork;
+            }
+        }));
     }
 
     function handleToggleYourList(artworkId, nextSeen) {
-        updateYourList(draft => {
-            const artwork = draft.find(a => a.id === artworkId);
-            artwork.seen = nextSeen;
-        });
+        setYourList(yourList.map(artwork => {
+            if (artwork.id === artworkId) {
+                return { ...artwork, seen: nextSeen };
+            } else {
+                return artwork;
+            }
+        }));
     }
 
     return (
@@ -41,7 +46,7 @@ export default function BucketList() {
     );
 }
 
-function ItemList({ artworks, onToggle }){
+function ItemList({ artworks, onToggle }) {
     return (
         <ul>
             {artworks.map(artwork => (
