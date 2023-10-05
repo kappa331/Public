@@ -1,19 +1,19 @@
-export default function Gallery() {
+export function Profile() {
     return (
-        <section>
-            <h1>Inspiring Sculptures</h1>
-            <Image />
-            <Image />
-            <Image />
-        </section>
+        <img
+            src="https://i.imgur.com/QIrZWGIs.jpg"
+            alt="Alan L. Hart"
+        />
     );
 }
 
-function Image() {
+export default function Gallery() {
     return (
-        <img
-            src="https://i.imgur.com/ZF6s192.jpg"
-            alt="'Floralis Genérica' by Eduardo Catalano: a gigantic metallic flower sculpture with reflective petals"
-        />
+        <section>
+            <h1>Amazing scientists</h1>
+            <Profile />
+            <Profile />
+            <Profile />
+        </section>
     );
 }
